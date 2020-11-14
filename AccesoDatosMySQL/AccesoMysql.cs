@@ -14,13 +14,11 @@ namespace AccesoDatosMySQL
     public partial class AccesoMysql : Form
     {
         static MySqlConnection Conex = new MySqlConnection();
-        static string serv = "Server=localhost;";
+        static string serv = "server=localhost;";
         static string db = "Database=agenda;";
-        static string usuario = "UID=root;";
-        static string pwd = "Furipapa86jo";
-        string CadenaDeConexion = (serv + "port=3306;" + usuario + pwd + db + "pooling=false;" +
-            "Allow Zero Datetime=False;Convert Zero Datetime=True");
-        static DataTable tabla;
+        static string usuario = "user id=root;";
+        static string pwd = "password=Furipapa86jo";
+        string CadenaDeConexion = (serv + db + usuario + pwd);
         static MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM contactos",Conex);
         static MySqlCommandBuilder comandoSQL = new MySqlCommandBuilder(dataAdapter);
         public void Conectar()
@@ -46,7 +44,7 @@ namespace AccesoDatosMySQL
         {
             MySqlDataReader registrosObtenidos = null;
 
-            MySqlCommand cmd = new MySqlCommand("SELECT id_contacto FROM contactos", Conex);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM contactos", Conex);
             try
             {
                 registrosObtenidos = cmd.ExecuteReader();
@@ -55,7 +53,7 @@ namespace AccesoDatosMySQL
                     dataGridView.Rows.Add(1);
                     for (int j = 0; j < 6; j++)
                     {
-                          
+                       //dataGridView.Columns.ad   
 
                     }
                 } 
